@@ -5,7 +5,6 @@ log_file = 'DATA05.CSV';
 LUT_MET = 'MET_LUT.csv';
 pix_file = '2018-08-22 11-30-26.bin-101613.mat';
 LUT_UCASS = 'LUT_D_water.txt';
-outfile = genfile('SAM_DATA');
 density = 997000000;
 
 PIXdat = PIXextract(date,pix_file);
@@ -22,6 +21,8 @@ metdat = metstruct(met);
 
 [profiles,pindex] = detect_profile(metdat);
 
+genfile('SAM_DATA',log_file,pix_file,date,profiles);
+
 % plot([profiles.profile_1.temperature],[profiles.profile_1.altitude])
 % hold on
 % plot([profiles.profile_2.temperature],[profiles.profile_2.altitude])
@@ -31,7 +32,5 @@ metdat = metstruct(met);
 % plot([profiles.profile_3.temperature],[profiles.profile_3.altitude])
 % hold on
 % plot([profiles.profile_4.temperature],[profiles.profile_4.altitude])
-
-
 
 

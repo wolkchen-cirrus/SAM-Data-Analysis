@@ -1,8 +1,8 @@
-function [ filename ] = genfile( generic )
+function [] = genfile( generic_name, log_file, pix_file, date, profile_struct )
 
 list = dir;
 [rl, ~] = size(list);
-namebuf = [generic,'_00.csv'];
+namebuf = [generic_name,'_00.xls'];
 namecell = cell(1,rl);
 for i=1:rl
     namecell{i} = list(i).name;
@@ -15,6 +15,16 @@ for i=1:rl
         break
     end
 end
+nprof = length(fieldnames(profile_struct));
+filename = [date,'\',filename];
+for i=1:nprof
+    writetable(struct2table(profile_struct.(['profile_',num2str(i)])),...
+        filename,'sheet',i)
+end
+xlswrite(filename,{'MET_DATA_FILE'},(nprof+1),'A1')
+xlswrite(filename,{'PIXHAWK_DATA_FILE'},(nprof+1),'A2')
+xlswrite(filename,{log_file},(nprof+1),'B1')
+xlswrite(filename,{pix_file},(nprof+1),'B2')
 
 end
 
