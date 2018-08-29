@@ -1,4 +1,7 @@
 function [ mstruct ] = metstruct( rawmet )
+%metstruct - turns an array into a formatted struct
+%   lays out the format for the MET data, rawmet is the array where the raw
+%   MET data is stored.
 
 [rr,cr] = size(rawmet);
 met_struct = struct('time',cell(rr,1),'temperature',cell(rr,1),...

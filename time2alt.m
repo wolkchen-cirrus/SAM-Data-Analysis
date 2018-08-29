@@ -1,4 +1,8 @@
 function [ Dout ] = time2alt( METcal, PIXdat )
+%time2alt - turns time domain to altitude domain
+%   METcal is the calibrated MET data (array) and PIXdat is the raw pixhawk
+%   data, this can also be seen as a function to combine the two data
+%   sources.
 
 [rmet,~] = size(METcal);
 [rpix,~] = size(PIXdat);

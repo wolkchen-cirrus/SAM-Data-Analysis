@@ -1,4 +1,8 @@
 function [ data ] = PIXextract( date, filename )
+%PIXextract - Extracts pixhawk data
+%   date is the date the measurements took place (also the folder name),
+%   filename is the name of the matlab workspace which pixhawk generates
+%   automatically with several pre-defined variables.
 
 path = [date, '\', 'PIXHAWK', '\', filename];
 load(path);
