@@ -1,4 +1,4 @@
-function [xp,yp,zp,ip,coef] = func_excludeoutlier_ellipsoid3d(xi,yi,zi,theta);
+function [xp,yp,zp,ip,coef] = func_excludeoutlier_ellipsoid3d(xi,yi,zi,theta)
 %======================================================================
 %
 % Version 1.01
@@ -40,9 +40,7 @@ function [xp,yp,zp,ip,coef] = func_excludeoutlier_ellipsoid3d(xi,yi,zi,theta);
 %
 %========================================================================
 
-%
-% --- initial setup
-%
+%%  Initial Setup
 
 n = max(size(xi));
 lambda = sqrt(2*log(n));
@@ -52,11 +50,7 @@ yp = [];
 zp = [];
 ip = [];
 
-%
-% --- rotate data
-%
-
-%theta = atan2( sum(xi.*zi), sum(xi.^2) );
+%%  Rotate Data
 
 if theta == 0
   X = xi;
@@ -69,24 +63,13 @@ else
   Z = xi*R(3,1) + yi*R(3,2) + zi*R(3,3);
 end
 
-%test
-%plot3(xi,yi,zi,'b*')
-%hold on
-%  plot3(X,Y,Z,'r*')
-%hold off
-%pause
-
-%
-% --- preprocess
-%
+%%  Pre-Processing
 
 a = lambda*nanstd(X);
 b = lambda*nanstd(Y);
 c = lambda*nanstd(Z);
 
-%
-% --- main
-%
+%%  Main
 
 m = 0;
 for i=1:n

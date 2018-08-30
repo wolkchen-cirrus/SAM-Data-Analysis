@@ -11,9 +11,7 @@ PIXdat = PIXextract(date,pix_file);
 [time_met,tfit,hfit] = calMET(date,LUT_MET,log_file);
 alt = time2alt(time_met,PIXdat);
 met = [time_met,alt];
-for i=1:500
-    [met(:,2), ip] = despike_phasespace3d(met(:,2),0,2);
-end
+met(:,2) = run_filter(met(:,2),1,5,10);
 metdat = metstruct(met);
 
 [ bb, counts ] = calUCASS( date, LUT_UCASS, log_file );
