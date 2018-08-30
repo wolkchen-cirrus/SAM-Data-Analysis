@@ -11,6 +11,9 @@ PIXdat = PIXextract(date,pix_file);
 [time_met,tfit,hfit] = calMET(date,LUT_MET,log_file);
 alt = time2alt(time_met,PIXdat);
 met = [time_met,alt];
+for i=1:500
+    [met(:,2), ip] = despike_phasespace3d(met(:,2),0,2);
+end
 metdat = metstruct(met);
 
 [ bb, counts ] = calUCASS( date, LUT_UCASS, log_file );
@@ -23,10 +26,10 @@ metdat = metstruct(met);
 
 genfile('SAM_DATA',log_file,pix_file,date,profiles);
 
-% plot([profiles.profile_1.temperature],[profiles.profile_1.altitude])
-% hold on
-% plot([profiles.profile_2.temperature],[profiles.profile_2.altitude])
-% hold on
+plot([profiles.profile_1.temperature],[profiles.profile_1.altitude])
+hold on
+plot([profiles.profile_2.temperature],[profiles.profile_2.altitude])
+hold on
 % xlim([0,7])
 % hold on
 % plot([profiles.profile_3.temperature],[profiles.profile_3.altitude])
