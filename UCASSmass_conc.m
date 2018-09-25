@@ -18,6 +18,7 @@ for i=1:rc
         volbuf(i,j) = counts(i,j)*((centers(1,j)/(2*1000000))^3)*4/3*pi;
     end
 end
+Vz = abs(Vz);
 massbuf = volbuf*density;
 Asample = 0.5e-6;
 mconc_buf = zeros(rc,1);

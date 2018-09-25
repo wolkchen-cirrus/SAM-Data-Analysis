@@ -13,14 +13,16 @@ alt = time2alt(time_met,PIXdat);
 met = [time_met,alt];
 met(:,2) = run_filter(met(:,2),2,20,10);
 
-[ bb, counts ] = calUCASS( date, LUT_UCASS, log_file );
+[bb,counts] = calUCASS(date,LUT_UCASS,log_file);
 mass_conc = UCASSmass_conc(counts,bb,met(:,5),density);
 met = [met,mass_conc];
+
 metdat = metstruct(met);
 
 [profiles,pindex] = detect_profile(metdat);
 altitudes = [10,50,70,100,120];
 slicestruct = sliceData(profiles,altitudes,pindex,counts);
+intParams = colint(profiles);
 
 % genfile('SAM_DATA',log_file,pix_file,date,profiles);
 
