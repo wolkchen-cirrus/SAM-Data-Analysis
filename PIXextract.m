@@ -15,7 +15,7 @@ Vzs = 1:rg;
 Vzq = 1:rg/rd:rg;
 Vz = interp1(Vzs,Vz,Vzq)';
 databuf(end,:) = [];
-databuf(end,:) = [];
+% databuf(end,:) = [];
 databuf = [databuf,Vz];
 
 data = databuf;
