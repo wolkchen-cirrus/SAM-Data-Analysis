@@ -1,6 +1,7 @@
 function [ metrt, pixrt ] = RTCzero( log_file, pix_file, date )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%RTCzero - A function which syncronises the measurements by pix and met
+%   metrt is the miliseconds since the start of the day for the logger rtc,
+%   pixrt is the same but for pixhawk.
 
 logPath = [date,'/','LOGGER','/',log_file];
 pixPath = [date,'/','PIXHAWK','/',pix_file];

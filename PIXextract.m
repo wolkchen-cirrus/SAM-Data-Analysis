@@ -14,8 +14,12 @@ Vz = GPS(:,13);
 Vzs = 1:rg;
 Vzq = 1:rg/rd:rg;
 Vz = interp1(Vzs,Vz,Vzq)';
-databuf(end,:) = [];
-% databuf(end,:) = [];
+[rg,~] = size(Vz);
+[rd,~] = size(databuf);
+rdiff = rd-rg;
+for i=1:rdiff
+    databuf(end,:) = [];
+end
 databuf = [databuf,Vz];
 
 data = databuf;
