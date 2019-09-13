@@ -23,7 +23,5 @@ end
 HUM_fit = scatteredInterpolant([LUT(:,3),LUT(:,4)],LUT(:,2),'linear' ...
     ,'linear');
 
-
-
 end
 
